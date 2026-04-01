@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Crash Course - Combat Basics</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>D&D Crash Course</h1>
+            <p>For Complete Beginners</p>
+
+            <div class="nav-section">
+                <h3>Tutorial Modules</h3>
+                <a class="nav-item" href="index.html" data-page="index.html">
+                    <input type="checkbox" id="check1">
+                    <span>1. What is D&D?</span>
+                </a>
+                <a class="nav-item" href="character-creation.html" data-page="character-creation.html">
+                    <input type="checkbox" id="check2">
+                    <span>2. Character Creation</span>
+                </a>
+                <a class="nav-item" href="core-mechanics.html" data-page="core-mechanics.html">
+                    <input type="checkbox" id="check3">
+                    <span>3. Core Mechanics</span>
+                </a>
+                <a class="nav-item" href="combat.html" data-page="combat.html">
+                    <input type="checkbox" id="check4">
+                    <span>4. Combat Basics</span>
+                </a>
+                <a class="nav-item" href="roleplay.html" data-page="roleplay.html">
+                    <input type="checkbox" id="check5">
+                    <span>5. Roleplay</span>
+                </a>
+                <a class="nav-item" href="first-session.html" data-page="first-session.html">
+                    <input type="checkbox" id="check6">
+                    <span>6. First Session Prep</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Reference</h3>
+                <a class="nav-item" href="reference.html#glossary" data-page="reference.html">
+                    <span>📖 Glossary</span>
+                </a>
+                <a class="nav-item" href="reference.html#quickref" data-page="reference.html">
+                    <span>⚡ Quick Reference</span>
+                </a>
+                <a class="nav-item" href="reference.html#resources" data-page="reference.html">
+                    <span>🔗 Resources</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h2>Module 4: Combat Basics</h2>
+            <p>Eventually, you'll get into a fight—whether it's bandits, monsters, or an angry tavern owner. Here's how combat works in D&amp;D!</p>
+
+            <h3>When Combat Starts: Rolling Initiative</h3>
+            <p>When a fight breaks out, everyone rolls initiative to determine turn order.</p>
+            <p><strong>Initiative:</strong> Roll d20 + your Dexterity modifier</p>
+            <p>The DM lists everyone (players and enemies) from highest to lowest initiative. That's the order you'll take turns in.</p>
+
+            <div class="example-box">
+                <strong>Example:</strong><br>
+                • Fighter rolls 15<br>
+                • Rogue rolls 18<br>
+                • Goblin rolls 10<br>
+                • Cleric rolls 12<br><br>
+                <strong>Turn order:</strong> Rogue (18) → Fighter (15) → Cleric (12) → Goblin (10)
+            </div>
+
+            <h3>Rounds and Turns</h3>
+            <p>Combat is organized into <strong>rounds</strong>. Each round, everyone gets one <strong>turn</strong> in initiative order.</p>
+            <p><strong>One round = about 6 seconds in the game world.</strong> Combat moves fast!</p>
+
+            <h3>What You Can Do On Your Turn</h3>
+
+            <p><strong>MOVEMENT</strong> (up to your speed, usually 30 feet)</p>
+            <ul>
+                <li>You can split this up: move 10 feet, attack, then move 20 more feet</li>
+                <li>Moving through difficult terrain (rubble, water) costs extra movement</li>
+            </ul>
+
+            <p><strong>ACTION</strong> (choose ONE)</p>
+            <ul>
+                <li><strong>Attack:</strong> Make one weapon attack (or more if your class gives you extra)</li>
+                <li><strong>Cast a Spell:</strong> Cast one spell with a casting time of 1 action</li>
+                <li><strong>Dash:</strong> Move up to your speed again (double movement!)</li>
+                <li><strong>Disengage:</strong> Move without provoking opportunity attacks</li>
+                <li><strong>Dodge:</strong> Attacks against you have disadvantage until your next turn</li>
+                <li><strong>Help:</strong> Give an ally advantage on their next ability check or attack</li>
+                <li><strong>Hide:</strong> Make a Stealth check to hide from enemies</li>
+                <li><strong>Ready:</strong> Prepare an action to trigger when a specific thing happens</li>
+                <li><strong>Search:</strong> Make a Perception or Investigation check to find something</li>
+                <li><strong>Use an Object:</strong> Open a door, drink a potion, pull a lever, etc.</li>
+            </ul>
+
+            <p><strong>BONUS ACTION</strong> (only if you have an ability that uses it)</p>
+            <ul>
+                <li>Some class features and spells use a bonus action</li>
+                <li>If you don't have one, you can't just "use" a bonus action</li>
+            </ul>
+
+            <p><strong>FREE INTERACTIONS</strong> (reasonable minor stuff)</p>
+            <ul>
+                <li>Draw or sheathe a weapon</li>
+                <li>Open a door</li>
+                <li>Shout a warning</li>
+                <li>Drop an item</li>
+            </ul>
+
+            <p><strong>REACTION</strong> (happens on someone else's turn, only if triggered)</p>
+            <ul>
+                <li>You get ONE reaction per round</li>
+                <li>Most common: Opportunity Attack (see below)</li>
+            </ul>
+
+            <h3>Making an Attack</h3>
+            <p>Here's how to attack an enemy:</p>
+
+            <p><strong>STEP 1:</strong> Declare your target and what weapon you're using</p>
+
+            <p><strong>STEP 2:</strong> Roll your attack roll:</p>
+            <div class="formula">d20 + ability modifier + proficiency bonus  VS.  target's AC</div>
+            <ul>
+                <li>Use Strength for melee weapons (swords, axes, hammers)</li>
+                <li>Use Dexterity for ranged weapons (bows, crossbows) or finesse weapons (rapiers, daggers)</li>
+            </ul>
+
+            <p><strong>STEP 3:</strong> If you hit (meet or beat their AC), roll damage:</p>
+            <div class="formula">Weapon damage dice + ability modifier</div>
+
+            <p><strong>STEP 4:</strong> The target subtracts that damage from their Hit Points (HP)</p>
+
+            <div class="example-box">
+                <strong>Example Attack:</strong><br>
+                Your Fighter attacks a goblin (AC 13) with a longsword.<br><br>
+                • You roll d20: you get a 12<br>
+                • Add your STR modifier (+2) and proficiency (+2): 12 + 2 + 2 = <strong>16</strong><br>
+                • 16 beats AC 13—you hit!<br>
+                • Roll damage: 1d8 + 2 (STR modifier) = you roll a 5, +2 = <strong>7 damage</strong><br>
+                • The goblin takes 7 damage!
+            </div>
+
+            <h3>Opportunity Attacks (Reactions)</h3>
+            <p>If an enemy moves OUT of your melee reach (usually 5 feet), you can use your <strong>reaction</strong> to make one melee attack against them.</p>
+
+            <div class="example-box">
+                <strong>Example:</strong><br>
+                A goblin is standing next to your Fighter. The goblin tries to run away. You get to make an opportunity attack as it leaves!
+            </div>
+
+            <p><strong>How to avoid opportunity attacks:</strong></p>
+            <ul>
+                <li>Use the Disengage action before moving</li>
+                <li>Teleport (doesn't count as "moving")</li>
+                <li>Someone shoves the enemy away from you</li>
+            </ul>
+
+            <h3>What Happens at 0 Hit Points?</h3>
+            <p>When you drop to 0 HP, you fall unconscious and start making <strong>death saving throws</strong>.</p>
+
+            <p><strong>Death Saving Throws:</strong></p>
+            <ul>
+                <li>At the start of your turn, roll a d20 (no modifiers)</li>
+                <li><strong>10 or higher:</strong> Success (mark one success)</li>
+                <li><strong>9 or lower:</strong> Failure (mark one failure)</li>
+                <li><strong>Natural 20:</strong> You regain 1 HP and wake up!</li>
+                <li><strong>Natural 1:</strong> Counts as TWO failures</li>
+            </ul>
+
+            <p><strong>Three successes:</strong> You stabilize (unconscious but not dying)<br>
+            <strong>Three failures:</strong> Your character dies</p>
+
+            <p><strong>How to save a dying ally:</strong></p>
+            <ul>
+                <li>Use a healing spell or potion (they wake up immediately)</li>
+                <li>Use the Help action and succeed on a DC 10 Medicine check (they stabilize)</li>
+            </ul>
+
+            <p><strong>Damage while at 0 HP:</strong><br>
+            If someone hits you while you're unconscious, it counts as a failed death save. A critical hit counts as TWO failures!</p>
+
+            <h3>Simple Combat Example</h3>
+
+            <div class="example-box">
+                <strong>Situation:</strong> A Fighter and Rogue are fighting two goblins.<br><br>
+
+                <strong>Initiative order:</strong> Rogue (17), Fighter (14), Goblin 1 (12), Goblin 2 (8)<br><br>
+
+                <strong>ROGUE'S TURN:</strong><br>
+                • Moves 20 feet to get behind Goblin 1<br>
+                • Uses action to Attack: Rolls 16, hits! Deals 9 damage.<br>
+                • Goblin 1 has only 7 HP—it dies!<br><br>
+
+                <strong>FIGHTER'S TURN:</strong><br>
+                • Moves 10 feet toward Goblin 2<br>
+                • Uses action to Attack: Rolls 11, misses (Goblin's AC is 13)<br>
+                • "My sword swings wide!"<br><br>
+
+                <strong>GOBLIN 1:</strong> Dead (skips turn)<br><br>
+
+                <strong>GOBLIN 2'S TURN:</strong><br>
+                • Shoots arrow at Fighter<br>
+                • Rolls 15, hits! (Fighter's AC is 14)<br>
+                • Rolls damage: 5 damage to the Fighter<br><br>
+
+                <strong>Round 1 complete! Start Round 2 at the top of initiative (Rogue goes first again)</strong>
+            </div>
+
+            <h3>You're Ready to Fight!</h3>
+            <p>Combat seems complicated at first, but once you've been through a few rounds, it becomes natural. Remember: your DM and fellow players will help remind you what you can do!</p>
+
+            <p><strong>Next up: <a href="roleplay.html">Module 5 — Roleplay!</a></strong></p>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

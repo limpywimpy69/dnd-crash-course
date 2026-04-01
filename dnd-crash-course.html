@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Crash Course for Beginners</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        
+        .sidebar p {
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+        
+        .nav-section {
+            margin-bottom: 30px;
+        }
+        
+        .nav-section h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #95a5a6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .nav-item:hover {
+            background-color: #34495e;
+        }
+        
+        .nav-item.active {
+            background-color: #3498db;
+        }
+        
+        .nav-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        
+        .module {
+            display: none;
+        }
+        
+        .module.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .module h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .module h3 {
+            color: #2980b9;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .module p {
+            margin-bottom: 15px;
+        }
+        
+        .module ul, .module ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .module li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .example-box {
+            background-color: #ecf0f1;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .formula {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .glossary-term {
+            margin-bottom: 15px;
+        }
+        
+        .glossary-term strong {
+            color: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>D&D Crash Course</h1>
+            <p>For Complete Beginners</p>
+            
+            <div class="nav-section">
+                <h3>Tutorial Modules</h3>
+                <div class="nav-item active" data-module="module1">
+                    <input type="checkbox" id="check1">
+                    <span>1. What is D&D?</span>
+                </div>
+                <div class="nav-item" data-module="module2">
+                    <input type="checkbox" id="check2">
+                    <span>2. Character Creation</span>
+                </div>
+                <div class="nav-item" data-module="module3">
+                    <input type="checkbox" id="check3">
+                    <span>3. Core Mechanics</span>
+                </div>
+                <div class="nav-item" data-module="module4">
+                    <input type="checkbox" id="check4">
+                    <span>4. Combat Basics</span>
+                </div>
+                <div class="nav-item" data-module="module5">
+                    <input type="checkbox" id="check5">
+                    <span>5. Roleplay</span>
+                </div>
+                <div class="nav-item" data-module="module6">
+                    <input type="checkbox" id="check6">
+                    <span>6. First Session Prep</span>
+                </div>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Reference</h3>
+                <div class="nav-item" data-module="glossary">
+                    <span>📖 Glossary</span>
+                </div>
+                <div class="nav-item" data-module="quickref">
+                    <span>⚡ Quick Reference</span>
+                </div>
+                <div class="nav-item" data-module="resources">
+                    <span>🔗 Resources</span>
+                </div>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <!-- MODULE 1: WHAT IS D&D? -->
+            <section id="module1" class="module active">
+                <h2>Module 1: What is Dungeons & Dragons?</h2>
+                <p>Welcome to the world of Dungeons & Dragons (D&D)! If you've heard about D&D but never played, you're probably wondering: what exactly IS this game?</p>
+                
+                <h3>It's Collaborative Storytelling</h3>
+                <p>D&D is a game where you and your friends tell a story together. One person, the Dungeon Master (DM), describes the world and the situations your characters encounter. Everyone else plays a character—a hero in that world—and decides what their character does.</p>
+                
+                <p>Think of it like this: The DM says, "You enter a dark tavern. A hooded figure sits alone in the corner, watching you." Then you decide: Do you approach them? Ignore them and order a drink? Try to sneak closer to eavesdrop? It's YOUR choice.</p>
+                
+                <h3>The DM: Your Guide and Referee</h3>
+                <p>The DM is like a combination of narrator, actor, and referee. They:</p>
+                <ul>
+                    <li>Describe what your characters see, hear, and experience</li>
+                    <li>Play all the other characters in the world (called NPCs—Non-Player Characters)</li>
+                    <li>Create (or use pre-made) adventures for you to experience</li>
+                    <li>Decide when you need to roll dice to see if you succeed at something</li>
+                    <li>Make final rulings on rules questions</li>
+                </ul>
+                <p>The DM isn't "against" the players—they're there to help everyone have fun and tell an exciting story together.</p>
+                
+                <h3>The Players: The Heroes of the Story</h3>
+                <p>As a player, you create a character—maybe a brave knight, a sneaky rogue, or a powerful wizard. This character is who you'll "be" during the game. You'll:</p>
+                <ul>
+                    <li>Describe what your character does and says</li>
+                    <li>Make decisions (Should we fight the dragon or try to sneak past?)</li>
+                    <li>Roll dice when the outcome is uncertain</li>
+                    <li>Work with other players to overcome challenges</li>
+                </ul>
+                
+                <h3>What Makes D&D Different from Video Games?</h3>
+                <p>In a video game, you can only do what the programmers planned for. In D&D, you can try ANYTHING. Want to convince the villain to join your side? Climb on the dragon's back? Open a bakery instead of going on adventures? You can try! The DM will help figure out if and how it works.</p>
+                
+                <h3>What Does a Session Look Like?</h3>
+                <p>A typical D&D session lasts 3-4 hours (though some are shorter or longer). Here's roughly what happens:</p>
+                <ol>
+                    <li><strong>Recap:</strong> The DM reminds everyone what happened last time</li>
+                    <li><strong>The Adventure:</strong> The DM describes situations, you make choices, roll dice for uncertain actions</li>
+                    <li><strong>Combat (maybe):</strong> If you fight enemies, combat has structured turns</li>
+                    <li><strong>Roleplay:</strong> Talk to NPCs, make plans, interact with the world</li>
+                    <li><strong>Breaks:</strong> Snack breaks are important!</li>
+                </ol>
+                
+                <h3>There's No "Winning"</h3>
+                <p>D&D isn't about beating other players or reaching "the end." It's about the journey, the story, and the fun you have together. Some of the best D&D moments come from failure—like when your plan goes hilariously wrong or your character does something ridiculous.</p>
+                
+                <p><strong>Ready to learn how to create your first character? Let's move on to Module 2!</strong></p>
+            </section>
+
+            <!-- MODULE 2: CHARACTER CREATION -->
+            <section id="module2" class="module">
+                <h2>Module 2: Creating Your First Character</h2>
+                <p>Your character is your avatar in the D&D world—the hero you'll control throughout your adventures. Let's build one step by step!</p>
+                
+                <h3>STEP 1: Understanding Ability Scores</h3>
+                <p>Every D&D character has six ability scores that describe their physical and mental capabilities:</p>
+                
+                <p><strong>📊 The Six Abilities:</strong></p>
+                <ul>
+                    <li><strong>Strength (STR):</strong> Physical power—lifting, carrying, melee attacks</li>
+                    <li><strong>Dexterity (DEX):</strong> Agility and reflexes—dodging, sneaking, ranged attacks</li>
+                    <li><strong>Constitution (CON):</strong> Endurance and health—how many hit points you have, resisting poison</li>
+                    <li><strong>Intelligence (INT):</strong> Reasoning and memory—recalling lore, solving puzzles, wizard magic</li>
+                    <li><strong>Wisdom (WIS):</strong> Awareness and intuition—noticing hidden things, reading people, cleric magic</li>
+                    <li><strong>Charisma (CHA):</strong> Force of personality—persuading, deceiving, intimidating, bard/warlock magic</li>
+                </ul>
+                
+                <h3>Ability Scores vs. Ability Modifiers</h3>
+                <p>Here's something important: Your ability SCORES (like 14 or 16) don't matter as much as your ability MODIFIERS (like +2 or +3). The modifier is what you actually add to dice rolls.</p>
+                
+                <p><strong>How to calculate a modifier:</strong></p>
+                <div class="formula">(Ability Score - 10) ÷ 2, rounded down</div>
+                
+                <div class="example-box">
+                    <strong>Example:</strong> If your Strength is 14:<br>
+                    (14 - 10) = 4<br>
+                    4 ÷ 2 = 2<br>
+                    Your Strength modifier is +2
+                </div>
+                
+                <p><strong>Common Scores and Modifiers:</strong></p>
+                <table>
+                    <tr>
+                        <th>Score</th>
+                        <th>Modifier</th>
+                        <th>What This Means</th>
+                    </tr>
+                    <tr>
+                        <td>8-9</td>
+                        <td>-1</td>
+                        <td>Below average</td>
+                    </tr>
+                    <tr>
+                        <td>10-11</td>
+                        <td>+0</td>
+                        <td>Average</td>
+                    </tr>
+                    <tr>
+                        <td>12-13</td>
+                        <td>+1</td>
+                        <td>Above average</td>
+                    </tr>
+                    <tr>
+                        <td>14-15</td>
+                        <td>+2</td>
+                        <td>Quite good</td>
+                    </tr>
+                    <tr>
+                        <td>16-17</td>
+                        <td>+3</td>
+                        <td>Excellent</td>
+                    </tr>
+                    <tr>
+                        <td>18-19</td>
+                        <td>+4</td>
+                        <td>Exceptional (rare at Level 1)</td>
+                    </tr>
+                </table>
+                
+                <p>When you make a check using an ability—like trying to climb a wall (Strength) or sneak past a guard (Dexterity)—you roll a d20 and add the relevant modifier.</p>
+                
+                <p><strong>Don't worry about memorizing this!</strong> You'll have your character sheet with all your modifiers written down. For now, just understand: higher scores = better modifiers = more likely to succeed.</p>
+                
+                <h3>STEP 2: Choosing Your Race</h3>
+                <p>In D&D, "race" means your character's species—human, elf, dwarf, etc. Your race gives you certain traits and abilities.</p>
+                
+                <p><strong>For your first character, here are three great options:</strong></p>
+                
+                <p><strong>Human</strong></p>
+                <ul>
+                    <li>Versatile and adaptable</li>
+                    <li>+1 to ALL ability scores (great for any class)</li>
+                    <li>Extra skill proficiency</li>
+                    <li>Good choice if you're unsure what to play</li>
+                </ul>
+                
+                <p><strong>Elf</strong></p>
+                <ul>
+                    <li>Graceful and long-lived</li>
+                    <li>+2 Dexterity (great for rangers, rogues, monks)</li>
+                    <li>Can't be put to sleep by magic</li>
+                    <li>Advantage on saves against being charmed</li>
+                    <li>Darkvision (can see in dim light)</li>
+                </ul>
+                
+                <p><strong>Dwarf</strong></p>
+                <ul>
+                    <li>Tough and resilient</li>
+                    <li>+2 Constitution (more hit points!)</li>
+                    <li>Resistance to poison</li>
+                    <li>Darkvision</li>
+                    <li>Great for fighters, clerics, or any front-line character</li>
+                </ul>
+                
+                <p><em>There are many other races (halfling, dragonborn, tiefling, etc.), but these three are simple and effective for beginners.</em></p>
+                
+                <h3>STEP 3: Choosing Your Class</h3>
+                <p>Your class is your character's profession—what they're trained to do. This is the MOST important choice because it determines your abilities and playstyle.</p>
+                
+                <p><strong>Three beginner-friendly classes:</strong></p>
+                
+                <p><strong>Fighter</strong></p>
+                <ul>
+                    <li><strong>What they do:</strong> Hit things with weapons, wear heavy armor, protect allies</li>
+                    <li><strong>Why beginners love it:</strong> Simple and effective, hard to mess up</li>
+                    <li><strong>Key ability:</strong> Strength (for melee) or Dexterity (for ranged/finesse weapons)</li>
+                    <li><strong>Playstyle:</strong> Stand at the front, hit enemies, take hits</li>
+                </ul>
+                
+                <p><strong>Cleric</strong></p>
+                <ul>
+                    <li><strong>What they do:</strong> Heal allies, cast support magic, decent in melee</li>
+                    <li><strong>Why beginners love it:</strong> Versatile, always useful to the party</li>
+                    <li><strong>Key ability:</strong> Wisdom (for spellcasting)</li>
+                    <li><strong>Playstyle:</strong> Support your team, prepare different spells each day</li>
+                </ul>
+                
+                <p><strong>Rogue</strong></p>
+                <ul>
+                    <li><strong>What they do:</strong> Sneak, pick locks, deal massive damage with Sneak Attack</li>
+                    <li><strong>Why beginners love it:</strong> Fun abilities, great at skills, exciting playstyle</li>
+                    <li><strong>Key ability:</strong> Dexterity (for attacks, AC, and stealth)</li>
+                    <li><strong>Playstyle:</strong> Strike from the shadows, be the party's scout</li>
+                </ul>
+                
+                <p><em>Other classes (wizard, bard, barbarian, etc.) are great too, but these three are forgiving and fun for new players.</em></p>
+                
+                <h3>STEP 4: Assigning Ability Scores (Standard Array)</h3>
+                <p>Now let's give your character their stats! We'll use the <strong>Standard Array</strong> method, which gives you these six numbers to assign:</p>
+                
+                <div class="formula">15, 14, 13, 12, 10, 8</div>
+                
+                <p>You assign these to your six abilities (STR, DEX, CON, INT, WIS, CHA) based on what your class needs.</p>
+                
+                <p><strong>General advice:</strong></p>
+                <ul>
+                    <li>Put your highest score (15) in your class's KEY ABILITY:
+                        <ul>
+                            <li>Fighter → Strength or Dexterity</li>
+                            <li>Cleric → Wisdom</li>
+                            <li>Rogue → Dexterity</li>
+                        </ul>
+                    </li>
+                    <li>Put your second-highest (14) in Constitution (everyone needs hit points!)</li>
+                    <li>Put your lowest score (8) in something your class doesn't need:
+                        <ul>
+                            <li>Fighter → Intelligence or Charisma</li>
+                            <li>Cleric → Strength or Charisma</li>
+                            <li>Rogue → Strength or Intelligence</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <p><strong>Your race gives bonuses to these scores!</strong> Apply racial bonuses AFTER assigning your array.</p>
+                
+                <h3>STEP 5: Character Creation Example - Let's Build a Fighter!</h3>
+                <p>Let's create a character together step-by-step:</p>
+                
+                <div class="example-box">
+                    <ol>
+                        <li><strong>Choose Race:</strong> Dwarf (+2 Constitution)</li>
+                        <li><strong>Choose Class:</strong> Fighter</li>
+                        <li><strong>Assign Scores (before racial bonus):</strong>
+                            <ul>
+                                <li>STR: 15 (Fighter's key ability)</li>
+                                <li>DEX: 12 (helps AC)</li>
+                                <li>CON: 14 (will become 16 with Dwarf bonus!)</li>
+                                <li>INT: 8 (Fighters don't need this)</li>
+                                <li>WIS: 13 (helps with Perception)</li>
+                                <li>CHA: 10 (average)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Apply Racial Bonus:</strong> CON becomes 16 (+2 from being a Dwarf)</li>
+                        <li><strong>Calculate Modifiers:</strong>
+                            <ul>
+                                <li>STR 15 → +2 modifier</li>
+                                <li>DEX 12 → +1 modifier</li>
+                                <li>CON 16 → +3 modifier</li>
+                                <li>INT 8 → -1 modifier</li>
+                                <li>WIS 13 → +1 modifier</li>
+                                <li>CHA 10 → +0 modifier</li>
+                            </ul>
+                        </li>
+                        <li><strong>Calculate Hit Points:</strong> Fighters start with 10 + CON modifier<br>
+                            10 + 3 = <strong>13 HP</strong>
+                        </li>
+                        <li><strong>Calculate Armor Class (wearing chainmail and shield):</strong>
+                            <ul>
+                                <li>Chainmail: AC 16</li>
+                                <li>Shield: +2 AC</li>
+                                <li><strong>Total AC: 18</strong> (very tough!)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Choose Starting Equipment:</strong> Fighters get chainmail, a shield, a weapon (longsword), and basic adventuring gear</li>
+                    </ol>
+                    
+                    <p><strong>Congratulations! You've built Thorin Ironforge, a sturdy Dwarf Fighter ready for adventure!</strong></p>
+                </div>
+                
+                <h3>You Did It!</h3>
+                <p>Character creation is the hardest part of D&D for beginners, and you just did it! Don't worry if it felt like a lot—once you've done it once, it gets much easier.</p>
+                
+                <p><strong>Next up:</strong> Module 3, where you'll learn the core mechanic that makes D&D work—the d20 roll!</p>
+            </section>
+
+            <!-- MODULE 3: CORE MECHANICS -->
+            <section id="module3" class="module">
+                <h2>Module 3: Core Mechanics - How Dice Rolling Works</h2>
+                <p>Now that you have a character, let's learn how to actually PLAY D&D! Almost everything in the game comes down to one simple mechanic.</p>
+                
+                <h3>The Core Mechanic (This Is Important!)</h3>
+                <p>When you try to do something where the outcome is uncertain, you roll a 20-sided die (d20), add a modifier, and compare the result to a target number.</p>
+                
+                <p><strong>The Formula:</strong></p>
+                <div class="formula">d20 + relevant modifier  VS.  target number</div>
+                
+                <p>If your total equals or beats the target number, you succeed!</p>
+                
+                <div class="example-box">
+                    <strong>Example:</strong><br>
+                    You're trying to climb a slippery cliff wall. The DM says, "This looks difficult. Make a Strength check, DC 13."<br><br>
+                    
+                    • You roll a d20: You get a 10<br>
+                    • You add your Strength modifier: +2<br>
+                    • Your total: 10 + 2 = 12<br>
+                    • Target (DC 13): You needed 13<br>
+                    • <strong>Result: You fail!</strong> You slip and can't make progress up the cliff.
+                </div>
+                
+                <p><strong>What's a DC?</strong><br>
+                DC means "Difficulty Class"—the target number you need to meet or beat. The DM sets this based on how hard the task is.</p>
+                
+                <h3>Three Types of d20 Rolls</h3>
+                <p>You'll make three main types of rolls in D&D:</p>
+                
+                <p><strong>1. Ability Checks</strong></p>
+                <ul>
+                    <li><strong>When:</strong> You're trying to DO something (climb, sneak, persuade, etc.)</li>
+                    <li><strong>Formula:</strong> d20 + ability modifier (+ proficiency if you're proficient in the skill)</li>
+                    <li><strong>Against:</strong> DC set by the DM</li>
+                </ul>
+                <p><strong>Example:</strong> Sneaking past a guard = Dexterity (Stealth) check</p>
+                
+                <p><strong>2. Saving Throws</strong></p>
+                <ul>
+                    <li><strong>When:</strong> You're trying to RESIST something (a spell, poison, trap, etc.)</li>
+                    <li><strong>Formula:</strong> d20 + ability modifier (+ proficiency if proficient in that save)</li>
+                    <li><strong>Against:</strong> DC set by the spell or effect</li>
+                </ul>
+                <p><strong>Example:</strong> A wizard casts fireball at you. Make a Dexterity saving throw to dodge!</p>
+                
+                <p><strong>3. Attack Rolls</strong></p>
+                <ul>
+                    <li><strong>When:</strong> You're trying to HIT someone with a weapon or spell</li>
+                    <li><strong>Formula:</strong> d20 + ability modifier + proficiency bonus (for attacks you're proficient with)</li>
+                    <li><strong>Against:</strong> Target's Armor Class (AC)</li>
+                </ul>
+                <p><strong>Example:</strong> Swinging your sword at a goblin. Its AC is 13. Roll d20 + your attack bonus!</p>
+                
+                <h3>Proficiency Bonus: When Do I Add It?</h3>
+                <p>Your proficiency bonus is +2 at Level 1. You add it when:</p>
+                <ul>
+                    <li>Using a skill you're proficient in (marked on your character sheet)</li>
+                    <li>Making a saving throw you're proficient in (depends on your class)</li>
+                    <li>Attacking with a weapon or spell you're proficient with</li>
+                </ul>
+                
+                <p><strong>Your DM will usually tell you what to roll.</strong> If you're ever unsure whether to add proficiency, just ask!</p>
+                
+                <h3>Advantage and Disadvantage</h3>
+                <p>Sometimes circumstances make things easier (advantage) or harder (disadvantage).</p>
+                
+                <p><strong>Advantage:</strong> Roll TWO d20s and use the HIGHER result<br>
+                <strong>Disadvantage:</strong> Roll TWO d20s and use the LOWER result</p>
+                
+                <div class="example-box">
+                    <strong>Example of Advantage:</strong><br>
+                    You're trying to sneak past a sleeping guard. The DM says, "Since they're asleep, roll your Stealth check with advantage!" You roll a 7 and a 16—you use the 16!
+                    <br><br>
+                    <strong>Example of Disadvantage:</strong><br>
+                    You're trying to shoot an arrow in a heavy rainstorm. The DM says, "Make your attack roll with disadvantage." You roll a 15 and a 6—you have to use the 6.
+                </div>
+                
+                <h3>Critical Hits and Critical Fails</h3>
+                
+                <p><strong>Natural 20 (Critical Hit):</strong></p>
+                <ul>
+                    <li>If you roll a 20 on the die (before adding modifiers), it's called a "natural 20"</li>
+                    <li>On an attack roll, this is an automatic hit AND you roll double damage dice!</li>
+                    <li>On ability checks, some DMs treat it as an automatic success (but this varies)</li>
+                </ul>
+                
+                <p><strong>Natural 1 (Critical Fail):</strong></p>
+                <ul>
+                    <li>If you roll a 1 on the die, it's called a "natural 1"</li>
+                    <li>On an attack roll, this is an automatic miss</li>
+                    <li>On ability checks, some DMs make something bad happen (but this varies)</li>
+                </ul>
+                
+                <h3>Passive Checks (Quick Note)</h3>
+                <p>Sometimes the DM doesn't want you to roll—they just use your "passive" score.</p>
+                
+                <p><strong>Passive Perception</strong> is the most common: <strong>10 + your Wisdom (Perception) modifier</strong></p>
+                
+                <p>This represents how aware you are without actively searching. The DM uses it to see if you notice hidden enemies or traps without you even rolling.</p>
+                
+                <h3>That's It!</h3>
+                <p>Seriously—that's the core of D&D! Roll d20, add modifier, compare to target number. Everything else builds on this foundation.</p>
+                
+                <p><strong>Next up:</strong> Module 4, where we'll dive into how combat works!</p>
+            </section>
+
+            <!-- MODULE 4: COMBAT BASICS -->
+            <section id="module4" class="module">
+                <h2>Module 4: Combat Basics</h2>
+                <p>Eventually, you'll get into a fight—whether it's bandits, monsters, or an angry tavern owner. Here's how combat works in D&D!</p>
+                
+                <h3>When Combat Starts: Rolling Initiative</h3>
+                <p>When a fight breaks out, everyone rolls initiative to determine turn order.</p>
+                
+                <p><strong>Initiative:</strong> Roll d20 + your Dexterity modifier</p>
+                
+                <p>The DM lists everyone (players and enemies) from highest to lowest initiative. That's the order you'll take turns in.</p>
+                
+                <div class="example-box">
+                    <strong>Example:</strong><br>
+                    • Fighter rolls 15<br>
+                    • Rogue rolls 18<br>
+                    • Goblin rolls 10<br>
+                    • Cleric rolls 12<br><br>
+                    
+                    <strong>Turn order:</strong> Rogue (18) → Fighter (15) → Cleric (12) → Goblin (10)
+                </div>
+                
+                <h3>Rounds and Turns</h3>
+                <p>Combat is organized into <strong>rounds</strong>. Each round, everyone gets one <strong>turn</strong> in initiative order.</p>
+                
+                <p><strong>One round = about 6 seconds in the game world.</strong> Combat moves fast!</p>
+                
+                <p>On your turn, here's what you can do:</p>
+                
+                <h3>What You Can Do On Your Turn</h3>
+                
+                <p><strong>MOVEMENT</strong> (up to your speed, usually 30 feet)</p>
+                <ul>
+                    <li>You can split this up: move 10 feet, attack, then move 20 more feet</li>
+                    <li>Moving through difficult terrain (rubble, water) costs extra movement</li>
+                </ul>
+                
+                <p><strong>ACTION</strong> (choose ONE)</p>
+                <ul>
+                    <li><strong>Attack:</strong> Make one weapon attack (or more if your class gives you extra)</li>
+                    <li><strong>Cast a Spell:</strong> Cast one spell with a casting time of 1 action</li>
+                    <li><strong>Dash:</strong> Move up to your speed again (double movement!)</li>
+                    <li><strong>Disengage:</strong> Move without provoking opportunity attacks</li>
+                    <li><strong>Dodge:</strong> Attacks against you have disadvantage until your next turn</li>
+                    <li><strong>Help:</strong> Give an ally advantage on their next ability check or attack</li>
+                    <li><strong>Hide:</strong> Make a Stealth check to hide from enemies</li>
+                    <li><strong>Ready:</strong> Prepare an action to trigger when a specific thing happens</li>
+                    <li><strong>Search:</strong> Make a Perception or Investigation check to find something</li>
+                    <li><strong>Use an Object:</strong> Open a door, drink a potion, pull a lever, etc.</li>
+                </ul>
+                
+                <p><strong>BONUS ACTION</strong> (only if you have an ability that uses it)</p>
+                <ul>
+                    <li>Some class features and spells use a bonus action</li>
+                    <li>If you don't have one, you can't just "use" a bonus action</li>
+                </ul>
+                
+                <p><strong>FREE INTERACTIONS</strong> (reasonable minor stuff)</p>
+                <ul>
+                    <li>Draw or sheathe a weapon</li>
+                    <li>Open a door</li>
+                    <li>Shout a warning</li>
+                    <li>Drop an item</li>
+                </ul>
+                
+                <p><strong>REACTION</strong> (happens on someone else's turn, only if triggered)</p>
+                <ul>
+                    <li>You get ONE reaction per round</li>
+                    <li>Most common: Opportunity Attack (see below)</li>
+                </ul>
+                
+                <h3>Making an Attack</h3>
+                <p>Here's how to attack an enemy:</p>
+                
+                <p><strong>STEP 1:</strong> Declare your target and what weapon you're using</p>
+                
+                <p><strong>STEP 2:</strong> Roll your attack roll:</p>
+                <div class="formula">d20 + ability modifier + proficiency bonus  VS.  target's AC</div>
+                <ul>
+                    <li>Use Strength for melee weapons (swords, axes, hammers)</li>
+                    <li>Use Dexterity for ranged weapons (bows, crossbows) or finesse weapons (rapiers, daggers)</li>
+                </ul>
+                
+                <p><strong>STEP 3:</strong> If you hit (meet or beat their AC), roll damage:</p>
+                <div class="formula">Weapon damage dice + ability modifier</div>
+                
+                <p><strong>STEP 4:</strong> The target subtracts that damage from their Hit Points (HP)</p>
+                
+                <div class="example-box">
+                    <strong>Example Attack:</strong><br>
+                    Your Fighter attacks a goblin (AC 13) with a longsword.<br><br>
+                    
+                    • You roll d20: you get a 12<br>
+                    • Add your STR modifier (+2) and proficiency (+2): 12 + 2 + 2 = <strong>16</strong><br>
+                    • 16 beats AC 13—you hit!<br>
+                    • Roll damage: 1d8 + 2 (STR modifier) = you roll a 5, +2 = <strong>7 damage</strong><br>
+                    • The goblin takes 7 damage!
+                </div>
+                
+                <h3>Opportunity Attacks (Reactions)</h3>
+                <p>If an enemy moves OUT of your melee reach (usually 5 feet), you can use your <strong>reaction</strong> to make one melee attack against them.</p>
+                
+                <div class="example-box">
+                    <strong>Example:</strong><br>
+                    A goblin is standing next to your Fighter. The goblin tries to run away. You get to make an opportunity attack as it leaves!
+                </div>
+                
+                <p><strong>How to avoid opportunity attacks:</strong></p>
+                <ul>
+                    <li>Use the Disengage action before moving</li>
+                    <li>Teleport (doesn't count as "moving")</li>
+                    <li>Someone shoves the enemy away from you</li>
+                </ul>
+                
+                <h3>What Happens at 0 Hit Points?</h3>
+                <p>When you drop to 0 HP, you fall unconscious and start making <strong>death saving throws</strong>.</p>
+                
+                <p><strong>Death Saving Throws:</strong></p>
+                <ul>
+                    <li>At the start of your turn, roll a d20 (no modifiers)</li>
+                    <li><strong>10 or higher:</strong> Success (mark one success)</li>
+                    <li><strong>9 or lower:</strong> Failure (mark one failure)</li>
+                    <li><strong>Natural 20:</strong> You regain 1 HP and wake up!</li>
+                    <li><strong>Natural 1:</strong> Counts as TWO failures</li>
+                </ul>
+                
+                <p><strong>Three successes:</strong> You stabilize (unconscious but not dying)<br>
+                <strong>Three failures:</strong> Your character dies</p>
+                
+                <p><strong>How to save a dying ally:</strong></p>
+                <ul>
+                    <li>Use a healing spell or potion (they wake up immediately)</li>
+                    <li>Use the Help action and succeed on a DC 10 Medicine check (they stabilize)</li>
+                </ul>
+                
+                <p><strong>Damage while at 0 HP:</strong><br>
+                If someone hits you while you're unconscious, it counts as a failed death save. A critical hit counts as TWO failures!</p>
+                
+                <h3>Simple Combat Example</h3>
+                <p>Let's see a round of combat in action:</p>
+                
+                <div class="example-box">
+                    <strong>Situation:</strong> A Fighter and Rogue are fighting two goblins.<br><br>
+                    
+                    <strong>Initiative order:</strong> Rogue (17), Fighter (14), Goblin 1 (12), Goblin 2 (8)<br><br>
+                    
+                    <strong>ROGUE'S TURN:</strong><br>
+                    • Moves 20 feet to get behind Goblin 1<br>
+                    • Uses action to Attack: Rolls 16, hits! Deals 9 damage.<br>
+                    • Goblin 1 has only 7 HP—it dies!<br><br>
+                    
+                    <strong>FIGHTER'S TURN:</strong><br>
+                    • Moves 10 feet toward Goblin 2<br>
+                    • Uses action to Attack: Rolls 11, misses (Goblin's AC is 13)<br>
+                    • "My sword swings wide!"<br><br>
+                    
+                    <strong>GOBLIN 1:</strong> Dead (skips turn)<br><br>
+                    
+                    <strong>GOBLIN 2'S TURN:</strong><br>
+                    • Shoots arrow at Fighter<br>
+                    • Rolls 15, hits! (Fighter's AC is 14)<br>
+                    • Rolls damage: 5 damage to the Fighter<br><br>
+                    
+                    <strong>Round 1 complete! Start Round 2 at the top of initiative (Rogue goes first again)</strong>
+                </div>
+                
+                <h3>You're Ready to Fight!</h3>
+                <p>Combat seems complicated at first, but once you've been through a few rounds, it becomes natural. Remember: your DM and fellow players will help remind you what you can do!</p>
+                
+                <p><strong>Next up:</strong> Module 5, where we'll talk about the most intimidating part for many beginners—roleplaying!</p>
+            </section>
+
+            <!-- MODULE 5: ROLEPLAY -->
+            <section id="module5" class="module">
+                <h2>Module 5: Roleplay & Social Interaction</h2>
+                <p>D&D isn't just fighting monsters—it's also talking to NPCs, making plans, and bringing your character to life. This is the "roleplay" part, and it's totally okay if it feels awkward at first!</p>
+                
+                <h3>You Don't Have to "Do Voices"</h3>
+                <p>Let's get this out of the way: You do NOT need to talk in a funny voice or be a professional actor. Some people love doing character voices, others just describe what their character says.</p>
+                
+                <p><strong>Both are totally fine:</strong></p>
+                <ul>
+                    <li><strong>Speaking in character:</strong> "Greetings, innkeeper! I seek a room for the night!"</li>
+                    <li><strong>Describing what you say:</strong> "My character politely asks the innkeeper for a room."</li>
+                </ul>
+                
+                <p>Do whatever feels comfortable. Most tables have a mix of both styles.</p>
+                
+                <h3>Ability Checks for Social Situations</h3>
+                <p>When you're trying to convince, deceive, or intimidate someone, you'll often make a Charisma-based ability check:</p>
+                
+                <p><strong>Persuasion (CHA):</strong> Convince someone through honesty and charm</p>
+                <ul>
+                    <li>Example: "Please let us pass—we're trying to save the village!"</li>
+                </ul>
+                
+                <p><strong>Deception (CHA):</strong> Lie convincingly or mislead</p>
+                <ul>
+                    <li>Example: "These aren't the droids you're looking for." (Wait, wrong game.)</li>
+                </ul>
+                
+                <p><strong>Intimidation (CHA):</strong> Threaten or coerce through fear</p>
+                <ul>
+                    <li>Example: "Tell us where the treasure is, or you'll regret it."</li>
+                </ul>
+                
+                <p><strong>Insight (WIS):</strong> Read someone's intentions or detect lies</p>
+                <ul>
+                    <li>Example: The merchant seems nervous. Are they hiding something?</li>
+                </ul>
+                
+                <p><strong>Investigation (INT):</strong> Search for clues or examine something closely</p>
+                <ul>
+                    <li>Example: You search the room for secret compartments.</li>
+                </ul>
+                
+                <p><strong>Your DM will ask for these rolls when appropriate.</strong> Just describe what your character is trying to do, and they'll tell you what to roll.</p>
+                
+                <h3>"Yes, And..." Collaborative Storytelling</h3>
+                <p>D&D works best when everyone builds on each other's ideas. This is called "Yes, and..."</p>
+                
+                <div class="example-box">
+                    <strong>Example:</strong><br>
+                    <strong>Player:</strong> "I want to leap onto the chandelier and swing across the room!"<br>
+                    <strong>DM (thinking: that's ridiculous... but fun!):</strong> "Okay, make an Athletics check. If you succeed, you swing dramatically across!"
+                </div>
+                
+                <p>The DM doesn't shut down creative ideas—they figure out HOW to make them work (or fail spectacularly).</p>
+                
+                <p>As a player, you can do the same: build on your party's ideas instead of shooting them down.</p>
+                
+                <h3>Describing Actions vs. Declaring Outcomes</h3>
+                <p>Tell the DM what your character <strong>tries to do</strong>, not what happens.</p>
+                
+                <p><strong>❌ BAD:</strong> "I Persuade the guard and he lets us in."<br>
+                <strong>✅ GOOD:</strong> "I try to convince the guard that we're supposed to be here. I say we're delivering supplies."</p>
+                
+                <p>The DM decides the outcome (usually based on your roll). You describe the attempt.</p>
+                
+                <h3>It's Okay to Be Awkward</h3>
+                <p>Here's a secret: <strong>Everyone feels awkward roleplaying at first.</strong> Even experienced players. And that's totally fine!</p>
+                
+                <p>Some tips:</p>
+                <ul>
+                    <li>Start small: Just describe your actions instead of acting them out</li>
+                    <li>Watch your fellow players and learn from them</li>
+                    <li>Embrace the awkwardness—laugh about it!</li>
+                    <li>Your character can be shy/quiet if you are</li>
+                    <li>You'll get more comfortable over time</li>
+                </ul>
+                
+                <p><strong>You can't "fail" at roleplaying.</strong> If you're trying to engage with the story and your fellow players, you're doing it right.</p>
+                
+                <h3>Example Social Encounter</h3>
+                
+                <div class="example-box">
+                    <strong>Situation:</strong> You need information from a suspicious merchant.<br><br>
+                    
+                    <strong>DM:</strong> "The merchant eyes you warily. 'I don't know nothing about no stolen goods.'"<br><br>
+                    
+                    <strong>Player options:</strong><br><br>
+                    
+                    <strong>Option 1 - Persuasion:</strong><br>
+                    "I assure him we're not guards—we're just trying to help find the stolen items for the rightful owner."<br>
+                    → DM: "Make a Persuasion check."<br><br>
+                    
+                    <strong>Option 2 - Intimidation:</strong><br>
+                    "I slam my hand on the counter and lean in close. 'We know you're hiding something.'"<br>
+                    → DM: "Make an Intimidation check."<br><br>
+                    
+                    <strong>Option 3 - Insight:</strong><br>
+                    "I study his body language. Does he seem genuinely ignorant, or is he lying?"<br>
+                    → DM: "Make an Insight check."<br><br>
+                    
+                    <strong>All three approaches are valid!</strong> D&D rewards creative problem-solving.
+                </div>
+                
+                <p><strong>Next Up: Preparing for Your First Real Session!</strong></p>
+            </section>
+
+            <!-- MODULE 6: FIRST SESSION PREP -->
+            <section id="module6" class="module">
+                <h2>Module 6: Your First Session - What to Expect</h2>
+                <p>You've learned the rules. You've created a character. You're almost ready! Here's what to expect when you actually sit down to play.</p>
+                
+                <h3>What is Session Zero?</h3>
+                <p>Many groups start with a "Session Zero" before playing. This is where you:</p>
+                <ul>
+                    <li>Meet the other players</li>
+                    <li>Discuss what kind of game everyone wants (serious? silly? combat-heavy? roleplay-heavy?)</li>
+                    <li>Establish table rules and boundaries (topics to avoid, content ratings, etc.)</li>
+                    <li>Create characters together (so you can build a cohesive party)</li>
+                    <li>Learn about the setting and starting situation</li>
+                </ul>
+                
+                <p><strong>Session Zero is optional, but highly recommended</strong> for new groups!</p>
+                
+                <h3>What to Bring</h3>
+                
+                <p><strong>Required:</strong></p>
+                <ul>
+                    <li>Your character sheet (printed or digital)</li>
+                    <li>Dice (or a dice roller app)</li>
+                    <li>Pencil and eraser</li>
+                    <li>Paper for notes</li>
+                </ul>
+                
+                <p><strong>Optional but helpful:</strong></p>
+                <ul>
+                    <li>Snacks or drinks to share</li>
+                    <li>Miniature or token to represent your character (if using a battle grid)</li>
+                    <li>Spell cards (if you're a spellcaster)</li>
+                    <li>A notebook for tracking party info and quest details</li>
+                </ul>
+                
+                <p><strong>Most importantly: bring a positive attitude and willingness to collaborate!</strong></p>
+                
+                <h3>Table Etiquette</h3>
+                
+                <p><strong>DO:</strong></p>
+                <ul>
+                    <li>Pay attention during others' turns</li>
+                    <li>Share the spotlight—let everyone have their moments</li>
+                    <li>Ask questions if you're confused</li>
+                    <li>Say "yes" to your fellow players' ideas when possible</li>
+                    <li>Take notes on important NPCs and plot points</li>
+                    <li>Respect the DM's rulings (discuss rules disputes later, not mid-session)</li>
+                </ul>
+                
+                <p><strong>DON'T:</strong></p>
+                <ul>
+                    <li>Hog all the attention</li>
+                    <li>Check your phone constantly</li>
+                    <li>Argue over rules during the game</li>
+                    <li>Derail the story for no reason</li>
+                    <li>Be mean to other players (even in character)</li>
+                </ul>
+                
+                <h3>Common Beginner Mistakes (And How to Avoid Them)</h3>
+                
+                <p><strong>Mistake 1: Over-planning</strong><br>
+                Your elaborate 10-step plan will fall apart when the dice don't cooperate. Be flexible!</p>
+                
+                <p><strong>Mistake 2: Analysis Paralysis</strong><br>
+                Don't spend 10 minutes deciding what to do. When in doubt, just try something!</p>
+                
+                <p><strong>Mistake 3: Forgetting Modifiers</strong><br>
+                Always add your modifiers to rolls. Write them clearly on your character sheet!</p>
+                
+                <p><strong>Mistake 4: Not Using Class Features</strong><br>
+                Read your class abilities and actually USE them. Fighters get Second Wind, Rogues get Cunning Action—don't forget!</p>
+                
+                <p><strong>Mistake 5: Playing Against the Party</strong><br>
+                D&D is cooperative. "My character would steal from the party" is usually not fun for anyone.</p>
+                
+                <h3>Where to Find Games</h3>
+                
+                <p><strong>In-Person:</strong></p>
+                <ul>
+                    <li>Local game stores (many host D&D Adventurers League games)</li>
+                    <li>University/college gaming clubs</li>
+                    <li>Libraries and community centers</li>
+                    <li>Ask friends if they're interested in starting a group!</li>
+                </ul>
+                
+                <p><strong>Online:</strong></p>
+                <ul>
+                    <li>r/lfg subreddit (Looking For Group)</li>
+                    <li>Roll20, Foundry VTT, or Fantasy Grounds</li>
+                    <li>D&D Beyond's Looking for Party forum</li>
+                    <li>Discord servers dedicated to finding groups</li>
+                </ul>
+                
+                <p><strong>Adventurers League</strong> is official D&D organized play—great for beginners because you can drop in/out of games.</p>
+                
+                <h3>What to Expect in Your First Session</h3>
+                
+                <p><strong>Reality check:</strong></p>
+                <ul>
+                    <li>You probably won't get through much story—that's okay!</li>
+                    <li>You'll forget rules—everyone does, even veterans</li>
+                    <li>Combat will take longer than you expect</li>
+                    <li>You might feel awkward—that's normal and temporary</li>
+                    <li>The DM might make mistakes too—be patient</li>
+                    <li>Unexpected things WILL happen—embrace the chaos!</li>
+                </ul>
+                
+                <p><strong>Focus on:</strong></p>
+                <ul>
+                    <li>Having fun with friends</li>
+                    <li>Learning as you go</li>
+                    <li>Telling a story together</li>
+                    <li>Not worrying about "playing perfectly"</li>
+                </ul>
+                
+                <h3>You're Ready!</h3>
+                <p>Congratulations! You've completed the D&D Crash Course for Beginners. You now know:</p>
+                <ul>
+                    <li>✅ What D&D is and how it works</li>
+                    <li>✅ How to create a character</li>
+                    <li>✅ The core d20 mechanic</li>
+                    <li>✅ Combat basics</li>
+                    <li>✅ Roleplay fundamentals</li>
+                    <li>✅ How to prepare for your first session</li>
+                </ul>
+                
+                <p><strong>You're not an expert—and that's fine.</strong> You know enough to sit down at a table and play. The rest you'll learn through experience.</p>
+                
+                <p><strong>Now go find a game and start your adventure!</strong></p>
+            </section>
+
+            <!-- GLOSSARY -->
+            <section id="glossary" class="module">
+                <h2>📖 Glossary: Common D&D Terms</h2>
+                
+                <div class="glossary-term">
+                    <strong>Ability Check:</strong> Rolling a d20 + ability modifier to see if you succeed at a task.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Ability Modifier:</strong> The bonus (or penalty) from an ability score, calculated as (Score - 10) ÷ 2.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Ability Score:</strong> Your character's core stats (STR, DEX, CON, INT, WIS, CHA), usually 3-20.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>AC (Armor Class):</strong> How hard you are to hit. Higher is better.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Action:</strong> The main thing you do on your turn in combat (Attack, Cast a Spell, etc.).
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Advantage:</strong> Roll 2d20 and use the higher result.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Bonus Action:</strong> A quick action some abilities let you take in addition to your main action.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Campaign:</strong> A series of connected D&D sessions telling one big story.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>CHA (Charisma):</strong> Ability score representing force of personality and social influence.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>CON (Constitution):</strong> Ability score representing health, stamina, and endurance.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Critical Hit:</strong> Rolling a natural 20 on an attack—hit automatically and roll damage dice twice!
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Critical Fail:</strong> Rolling a natural 1 on an attack—automatic miss.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>d20:</strong> A 20-sided die. The main die used in D&D.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>DC (Difficulty Class):</strong> The target number you need to meet or beat on an ability check or save.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>DEX (Dexterity):</strong> Ability score representing agility, reflexes, and coordination.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Disadvantage:</strong> Roll 2d20 and use the lower result.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>DM (Dungeon Master):</strong> The person who runs the game, narrates the world, and plays NPCs.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>HP (Hit Points):</strong> Your health. When you reach 0, you fall unconscious.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Initiative:</strong> d20 + DEX modifier, rolled at the start of combat to determine turn order.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>INT (Intelligence):</strong> Ability score representing reasoning, memory, and logic.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Long Rest:</strong> 8 hours of rest that fully restores HP and abilities.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Natural 20/1:</strong> The number shown on the d20 itself (before adding modifiers).
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>NPC (Non-Player Character):</strong> Any character controlled by the DM (not a player).
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>PC (Player Character):</strong> A character controlled by a player.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Proficiency Bonus:</strong> A bonus (+2 at Level 1) added to rolls for things you're trained in.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Reaction:</strong> An instant response to a trigger, taken outside your turn (like opportunity attacks).
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Round:</strong> In combat, one cycle through all combatants' turns (~6 seconds in game time).
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Saving Throw:</strong> A d20 roll to resist or avoid an effect (spells, traps, poison, etc.).
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Short Rest:</strong> About 1 hour of rest to catch your breath and recover some abilities.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>Spell Slot:</strong> A resource spellcasters use to cast spells. Once used, must rest to recover.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>STR (Strength):</strong> Ability score representing physical power and muscle.
+                </div>
+                
+                <div class="glossary-term">
+                    <strong>WIS (Wisdom):</strong> Ability score representing awareness, intuition, and insight.
+                </div>
+            </section>
+
+            <!-- QUICK REFERENCE -->
+            <section id="quickref" class="module">
+                <h2>⚡ Quick Reference Sheet</h2>
+                
+                <h3>THE CORE MECHANIC</h3>
+                <div class="formula">d20 + modifier  ≥  Target Number = Success</div>
+                
+                <h3>ABILITY SCORE MODIFIERS</h3>
+                <table>
+                    <tr>
+                        <th>Score</th>
+                        <th>Modifier</th>
+                    </tr>
+                    <tr><td>8-9</td><td>-1</td></tr>
+                    <tr><td>10-11</td><td>+0</td></tr>
+                    <tr><td>12-13</td><td>+1</td></tr>
+                    <tr><td>14-15</td><td>+2</td></tr>
+                    <tr><td>16-17</td><td>+3</td></tr>
+                    <tr><td>18-19</td><td>+4</td></tr>
+                </table>
+                
+                <h3>THE SIX ABILITIES</h3>
+                <ul>
+                    <li><strong>STR</strong> (Strength): Physical power</li>
+                    <li><strong>DEX</strong> (Dexterity): Agility and reflexes</li>
+                    <li><strong>CON</strong> (Constitution): Endurance and health</li>
+                    <li><strong>INT</strong> (Intelligence): Reasoning and memory</li>
+                    <li><strong>WIS</strong> (Wisdom): Awareness and insight</li>
+                    <li><strong>CHA</strong> (Charisma): Force of personality</li>
+                </ul>
+                
+                <h3>WHAT YOU CAN DO ON YOUR TURN</h3>
+                <ul>
+                    <li><strong>Movement:</strong> Up to your speed (usually 30 ft)</li>
+                    <li><strong>Action:</strong> Attack, Cast Spell, Dash, Disengage, Dodge, Help, Hide, etc.</li>
+                    <li><strong>Bonus Action:</strong> Only if you have an ability that uses one</li>
+                    <li><strong>Free Interaction:</strong> Draw weapon, open door, shout, etc.</li>
+                    <li><strong>Reaction:</strong> (on someone else's turn) Opportunity attack, etc.</li>
+                </ul>
+                
+                <h3>MAKING AN ATTACK</h3>
+                <ol>
+                    <li>Roll d20 + ability modifier + proficiency bonus</li>
+                    <li>Compare to target's AC</li>
+                    <li>If hit: Roll weapon damage + ability modifier</li>
+                    <li>Target subtracts damage from HP</li>
+                </ol>
+                
+                <h3>ADVANTAGE & DISADVANTAGE</h3>
+                <ul>
+                    <li><strong>Advantage:</strong> Roll 2d20, use HIGHER</li>
+                    <li><strong>Disadvantage:</strong> Roll 2d20, use LOWER</li>
+                </ul>
+                
+                <h3>COMMON DICE</h3>
+                <ul>
+                    <li><strong>d4:</strong> Pyramid (4 sides)</li>
+                    <li><strong>d6:</strong> Cube (6 sides)</li>
+                    <li><strong>d8:</strong> Octahedron (8 sides)</li>
+                    <li><strong>d10:</strong> Pentagonal trapezohedron (10 sides)</li>
+                    <li><strong>d12:</strong> Dodecahedron (12 sides)</li>
+                    <li><strong>d20:</strong> Icosahedron (20 sides)</li>
+                    <li><strong>d100 (percentile):</strong> Roll two d10s (one for tens, one for ones)</li>
+                </ul>
+                
+                <h3>AT 0 HIT POINTS</h3>
+                <ul>
+                    <li>Fall unconscious</li>
+                    <li>Make death saving throws each turn:
+                        <ul>
+                            <li>10+ = success</li>
+                            <li>9 or less = failure</li>
+                            <li>3 successes = stabilized</li>
+                            <li>3 failures = dead</li>
+                        </ul>
+                    </li>
+                    <li>Allies can heal you or stabilize you (Medicine check DC 10)</li>
+                </ul>
+            </section>
+
+            <!-- RESOURCES -->
+            <section id="resources" class="module">
+                <h2>🔗 Resources for Further Learning</h2>
+                
+                <h3>Official Rules & Tools</h3>
+                <ul>
+                    <li><strong>D&D Basic Rules (FREE PDF):</strong> https://www.dndbeyond.com/sources/basic-rules</li>
+                    <li><strong>D&D Beyond:</strong> Free character creation tool and digital rulebooks</li>
+                    <li><strong>Player's Handbook:</strong> The core rulebook ($29.99 on Amazon or local game store)</li>
+                </ul>
+                
+                <h3>Finding Games</h3>
+                <ul>
+                    <li><strong>r/lfg (Reddit):</strong> Find groups looking for players</li>
+                    <li><strong>Roll20:</strong> Free virtual tabletop for online games</li>
+                    <li><strong>D&D Adventurers League:</strong> Official organized play (find a store near you)</li>
+                    <li><strong>Local Game Stores:</strong> Many host weekly D&D nights</li>
+                </ul>
+                
+                <h3>Learning by Watching</h3>
+                <ul>
+                    <li><strong>Critical Role:</strong> Professional voice actors play D&D (popular but LONG episodes)</li>
+                    <li><strong>Dimension 20:</strong> Shorter, funnier actual-play series</li>
+                    <li><strong>Dungeons & Daddies:</strong> Comedy D&D podcast (not about actual dads)</li>
+                </ul>
+                
+                <h3>Community & Help</h3>
+                <ul>
+                    <li><strong>r/DnD:</strong> General D&D subreddit</li>
+                    <li><strong>r/DMAcademy:</strong> Advice for Dungeon Masters</li>
+                    <li><strong>D&D Beyond Forums:</strong> Official community</li>
+                </ul>
+                
+                <h3>Other Helpful Resources</h3>
+                <ul>
+                    <li><strong>DnD Spell Lists:</strong> Searchable spell database</li>
+                    <li><strong>Kobold Fight Club:</strong> Encounter builder for DMs</li>
+                    <li><strong>RPG Stack Exchange:</strong> Q&A for specific rules questions</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    
+    <script>
+        // Navigation and progress tracking
+        const navItems = document.querySelectorAll('.nav-item');
+        const modules = document.querySelectorAll('.module');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Don't trigger navigation when clicking checkbox
+                if (e.target.type === 'checkbox') {
+                    return;
+                }
+                
+                const targetModule = this.getAttribute('data-module');
+                
+                if (!targetModule) return;
+                
+                // Update active nav item
+                navItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show target module
+                modules.forEach(module => module.classList.remove('active'));
+                const targetElement = document.getElementById(targetModule);
+                if (targetElement) {
+                    targetElement.classList.add('active');
+                }
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Save progress to localStorage
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        
+        checkboxes.forEach(checkbox => {
+            // Load saved progress
+            const saved = localStorage.getItem(checkbox.id);
+            if (saved === 'true') {
+                checkbox.checked = true;
+            }
+            
+            // Save on change
+            checkbox.addEventListener('change', function(e) {
+                localStorage.setItem(this.id, this.checked);
+                e.stopPropagation(); // Prevent navigation trigger
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Crash Course - Core Mechanics</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>D&D Crash Course</h1>
+            <p>For Complete Beginners</p>
+
+            <div class="nav-section">
+                <h3>Tutorial Modules</h3>
+                <a class="nav-item" href="index.html" data-page="index.html">
+                    <input type="checkbox" id="check1">
+                    <span>1. What is D&D?</span>
+                </a>
+                <a class="nav-item" href="character-creation.html" data-page="character-creation.html">
+                    <input type="checkbox" id="check2">
+                    <span>2. Character Creation</span>
+                </a>
+                <a class="nav-item" href="core-mechanics.html" data-page="core-mechanics.html">
+                    <input type="checkbox" id="check3">
+                    <span>3. Core Mechanics</span>
+                </a>
+                <a class="nav-item" href="combat.html" data-page="combat.html">
+                    <input type="checkbox" id="check4">
+                    <span>4. Combat Basics</span>
+                </a>
+                <a class="nav-item" href="roleplay.html" data-page="roleplay.html">
+                    <input type="checkbox" id="check5">
+                    <span>5. Roleplay</span>
+                </a>
+                <a class="nav-item" href="first-session.html" data-page="first-session.html">
+                    <input type="checkbox" id="check6">
+                    <span>6. First Session Prep</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Reference</h3>
+                <a class="nav-item" href="reference.html#glossary" data-page="reference.html">
+                    <span>📖 Glossary</span>
+                </a>
+                <a class="nav-item" href="reference.html#quickref" data-page="reference.html">
+                    <span>⚡ Quick Reference</span>
+                </a>
+                <a class="nav-item" href="reference.html#resources" data-page="reference.html">
+                    <span>🔗 Resources</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h2>Module 3: Core Mechanics - How Dice Rolling Works</h2>
+            <p>Now that you have a character, let's learn how to actually PLAY D&amp;D! Almost everything in the game comes down to one simple mechanic.</p>
+
+            <h3>The Core Mechanic (This Is Important!)</h3>
+            <p>When you try to do something where the outcome is uncertain, you roll a 20-sided die (d20), add a modifier, and compare the result to a target number.</p>
+
+            <p><strong>The Formula:</strong></p>
+            <div class="formula">d20 + relevant modifier  VS.  target number</div>
+
+            <p>If your total equals or beats the target number, you succeed!</p>
+
+            <div class="example-box">
+                <strong>Example:</strong><br>
+                You're trying to climb a slippery cliff wall. The DM says, "This looks difficult. Make a Strength check, DC 13."<br><br>
+                • You roll a d20: You get a 10<br>
+                • You add your Strength modifier: +2<br>
+                • Your total: 10 + 2 = 12<br>
+                • Target (DC 13): You needed 13<br>
+                • <strong>Result: You fail!</strong> You slip and can't make progress up the cliff.
+            </div>
+
+            <p><strong>What's a DC?</strong><br>
+            DC means "Difficulty Class"—the target number you need to meet or beat. The DM sets this based on how hard the task is.</p>
+
+            <h3>Three Types of d20 Rolls</h3>
+            <p>You'll make three main types of rolls in D&amp;D:</p>
+
+            <p><strong>1. Ability Checks</strong></p>
+            <ul>
+                <li><strong>When:</strong> You're trying to DO something (climb, sneak, persuade, etc.)</li>
+                <li><strong>Formula:</strong> d20 + ability modifier (+ proficiency if you're proficient in the skill)</li>
+                <li><strong>Against:</strong> DC set by the DM</li>
+            </ul>
+            <p><strong>Example:</strong> Sneaking past a guard = Dexterity (Stealth) check</p>
+
+            <p><strong>2. Saving Throws</strong></p>
+            <ul>
+                <li><strong>When:</strong> You're trying to RESIST something (a spell, poison, trap, etc.)</li>
+                <li><strong>Formula:</strong> d20 + ability modifier (+ proficiency if proficient in that save)</li>
+                <li><strong>Against:</strong> DC set by the spell or effect</li>
+            </ul>
+            <p><strong>Example:</strong> A wizard casts fireball at you. Make a Dexterity saving throw to dodge!</p>
+
+            <p><strong>3. Attack Rolls</strong></p>
+            <ul>
+                <li><strong>When:</strong> You're trying to HIT someone with a weapon or spell</li>
+                <li><strong>Formula:</strong> d20 + ability modifier + proficiency bonus (for attacks you're proficient with)</li>
+                <li><strong>Against:</strong> Target's Armor Class (AC)</li>
+            </ul>
+            <p><strong>Example:</strong> Swinging your sword at a goblin. Its AC is 13. Roll d20 + your attack bonus!</p>
+
+            <h3>Proficiency Bonus: When Do I Add It?</h3>
+            <p>Your proficiency bonus is +2 at Level 1. You add it when:</p>
+            <ul>
+                <li>Using a skill you're proficient in (marked on your character sheet)</li>
+                <li>Making a saving throw you're proficient in (depends on your class)</li>
+                <li>Attacking with a weapon or spell you're proficient with</li>
+            </ul>
+            <p><strong>Your DM will usually tell you what to roll.</strong> If you're ever unsure whether to add proficiency, just ask!</p>
+
+            <h3>Advantage and Disadvantage</h3>
+            <p>Sometimes circumstances make things easier (advantage) or harder (disadvantage).</p>
+
+            <p><strong>Advantage:</strong> Roll TWO d20s and use the HIGHER result<br>
+            <strong>Disadvantage:</strong> Roll TWO d20s and use the LOWER result</p>
+
+            <div class="example-box">
+                <strong>Example of Advantage:</strong><br>
+                You're trying to sneak past a sleeping guard. The DM says, "Since they're asleep, roll your Stealth check with advantage!" You roll a 7 and a 16—you use the 16!
+                <br><br>
+                <strong>Example of Disadvantage:</strong><br>
+                You're trying to shoot an arrow in a heavy rainstorm. The DM says, "Make your attack roll with disadvantage." You roll a 15 and a 6—you have to use the 6.
+            </div>
+
+            <h3>Critical Hits and Critical Fails</h3>
+
+            <p><strong>Natural 20 (Critical Hit):</strong></p>
+            <ul>
+                <li>If you roll a 20 on the die (before adding modifiers), it's called a "natural 20"</li>
+                <li>On an attack roll, this is an automatic hit AND you roll double damage dice!</li>
+                <li>On ability checks, some DMs treat it as an automatic success (but this varies)</li>
+            </ul>
+
+            <p><strong>Natural 1 (Critical Fail):</strong></p>
+            <ul>
+                <li>If you roll a 1 on the die, it's called a "natural 1"</li>
+                <li>On an attack roll, this is an automatic miss</li>
+                <li>On ability checks, some DMs make something bad happen (but this varies)</li>
+            </ul>
+
+            <h3>Passive Checks (Quick Note)</h3>
+            <p>Sometimes the DM doesn't want you to roll—they just use your "passive" score.</p>
+            <p><strong>Passive Perception</strong> is the most common: <strong>10 + your Wisdom (Perception) modifier</strong></p>
+            <p>This represents how aware you are without actively searching. The DM uses it to see if you notice hidden enemies or traps without you even rolling.</p>
+
+            <h3>That's It!</h3>
+            <p>Seriously—that's the core of D&amp;D! Roll d20, add modifier, compare to target number. Everything else builds on this foundation.</p>
+
+            <p><strong>Next up: <a href="combat.html">Module 4 — Combat!</a></strong></p>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

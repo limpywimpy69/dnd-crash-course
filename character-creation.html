@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header style="text-align:center; padding: 8rem 1rem; background: #222; color: #fff; position: relative; overflow: hidden;">
+        <img src="Images/character-creation.jpg" alt="Dragon" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: 0.25; pointer-events: none;">
+        <div style="position: relative; z-index: 1;">
+            <h1 style="font-size: 2.8rem; margin: 0;">Character Creation</h1>
+        </div>
+    </header>
     <div class="container">
         <aside class="sidebar">
             <h1>D&D Crash Course</h1>
@@ -14,7 +20,7 @@
 
             <div class="nav-section">
                 <h3>Tutorial Modules</h3>
-                <a class="nav-item" href="index.html" data-page="index.html">
+                <a class="nav-item" href="what-is-dnd.html" data-page="what-is-dnd.html">
                     <input type="checkbox" id="check1">
                     <span>1. What is D&D?</span>
                 </a>
@@ -65,7 +71,7 @@
             <ul>
                 <li><strong>Strength (STR):</strong> Physical power—lifting, carrying, melee attacks</li>
                 <li><strong>Dexterity (DEX):</strong> Agility and reflexes—dodging, sneaking, ranged attacks</li>
-                <li><strong>Constitution (CON):</strong> Endurance and health—how many hit points you have, resisting poison</li>
+                <li><strong>Constitution (CON):</strong> Endurance and health—how many <span class="tip" data-tip="How much damage your character can take before falling unconscious.">hit points</span> you have, resisting poison</li>
                 <li><strong>Intelligence (INT):</strong> Reasoning and memory—recalling lore, solving puzzles, wizard magic</li>
                 <li><strong>Wisdom (WIS):</strong> Awareness and intuition—noticing hidden things, reading people, cleric magic</li>
                 <li><strong>Charisma (CHA):</strong> Force of personality—persuading, deceiving, intimidating, bard/warlock magic</li>
@@ -99,7 +105,7 @@
                 <tr><td>18-19</td><td>+4</td><td>Exceptional (rare at Level 1)</td></tr>
             </table>
 
-            <p>When you make a check using an ability—like trying to climb a wall (Strength) or sneak past a guard (Dexterity)—you roll a d20 and add the relevant modifier.</p>
+            <p>When you make a check using an ability—like trying to climb a wall (Strength) or sneak past a guard (Dexterity)—you roll a <span class="tip" data-tip="A 20-sided die, the most commonly rolled die in D&D.">d20</span> and add the relevant modifier.</p>
             <p><strong>Don't worry about memorizing this!</strong> You'll have your character sheet with all your modifiers written down. For now, just understand: higher scores = better modifiers = more likely to succeed.</p>
 
             <h3>STEP 2: Choosing Your Race</h3>
@@ -237,6 +243,241 @@
 
                 <p><strong>Congratulations! You've built Thorin Ironforge, a sturdy Dwarf Fighter ready for adventure!</strong></p>
             </div>
+
+            <!-- INTERACTIVE CHARACTER BUILDER -->
+            <div style="margin: 2.5rem 0; border: 2px solid #3498db; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.12);">
+                <div style="background: #2c3e50; color: white; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                    <div>
+                        <h3 style="margin: 0; color: #3498db; font-size: 1.3rem;">🎲 Interactive Character Builder</h3>
+                        <p style="margin: 0.3rem 0 0; opacity: 0.75; font-size: 0.88rem;">Fill in the fields and watch your character sheet build in real time!</p>
+                    </div>
+                    <button onclick="toggleSheetRef()" style="margin-left:auto; background: #3498db; color: white; border: none; padding: 0.4rem 0.9rem; border-radius: 5px; cursor: pointer; font-size: 0.85rem;">📄 View Official Sheet</button>
+                </div>
+
+                <!-- Official sheet reference (hidden by default) -->
+                <div id="sheet-ref" style="display:none; background:#f0f0f0; padding:1rem; text-align:center; border-bottom: 1px solid #ddd;">
+                    <p style="margin:0 0 0.5rem; font-size:0.85rem; color:#555;">Reference: Official D&amp;D 5e Character Sheet</p>
+                    <img src="Images/character-sheet.jpg" alt="Official D&D Character Sheet" style="max-width:100%; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                </div>
+
+                <div style="display:flex; flex-wrap:wrap;">
+                    <!-- FORM -->
+                    <div style="flex:1; min-width:280px; padding:1.5rem; background:#fafafa; border-right:1px solid #e0e0e0;">
+
+                        <h4 style="color:#2c3e50; border-bottom:2px solid #3498db; padding-bottom:0.3rem; margin-bottom:1rem;">Step 1 — The Basics</h4>
+
+                        <label style="display:block; margin-bottom:0.8rem;">
+                            <span style="font-size:0.85rem; font-weight:bold; color:#555;">Character Name</span>
+                            <input id="cb-name" type="text" placeholder="e.g. Thorin Ironforge" oninput="updatePreview()"
+                                style="display:block; width:100%; margin-top:0.3rem; padding:0.5rem 0.7rem; border:1px solid #ccc; border-radius:5px; font-size:0.95rem;">
+                        </label>
+
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <label style="flex:1; min-width:120px; display:block; margin-bottom:0.8rem;">
+                                <span style="font-size:0.85rem; font-weight:bold; color:#555;">Race</span>
+                                <select id="cb-race" onchange="syncDropdowns()"
+                                    style="display:block; width:100%; margin-top:0.3rem; padding:0.5rem 0.7rem; border:1px solid #ccc; border-radius:5px; font-size:0.95rem;">
+                                    <option value="human">Human (+1 all)</option>
+                                    <option value="elf">Elf (+2 DEX)</option>
+                                    <option value="dwarf">Dwarf (+2 CON)</option>
+                                </select>
+                            </label>
+                            <label style="flex:1; min-width:120px; display:block; margin-bottom:0.8rem;">
+                                <span style="font-size:0.85rem; font-weight:bold; color:#555;">Class</span>
+                                <select id="cb-class" onchange="updatePreview()"
+                                    style="display:block; width:100%; margin-top:0.3rem; padding:0.5rem 0.7rem; border:1px solid #ccc; border-radius:5px; font-size:0.95rem;">
+                                    <option value="fighter">Fighter (10 HP)</option>
+                                    <option value="cleric">Cleric (8 HP)</option>
+                                    <option value="rogue">Rogue (8 HP)</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <h4 style="color:#2c3e50; border-bottom:2px solid #3498db; padding-bottom:0.3rem; margin:1.2rem 0 0.8rem;">Step 2 — Assign Standard Array</h4>
+                        <p style="font-size:0.82rem; color:#666; margin-bottom:0.8rem;">Distribute <strong>15, 14, 13, 12, 10, 8</strong> — each number can only be used once.</p>
+
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
+                            <label style="display:block;">
+                                <span style="font-size:0.82rem; font-weight:bold; color:#555;">STR — Strength</span>
+                                <select id="cb-str" onchange="syncDropdowns()" style="display:block; width:100%; margin-top:0.2rem; padding:0.45rem 0.6rem; border:1px solid #ccc; border-radius:5px; font-size:0.9rem;"><option value="">—</option></select>
+                            </label>
+                            <label style="display:block;">
+                                <span style="font-size:0.82rem; font-weight:bold; color:#555;">DEX — Dexterity</span>
+                                <select id="cb-dex" onchange="syncDropdowns()" style="display:block; width:100%; margin-top:0.2rem; padding:0.45rem 0.6rem; border:1px solid #ccc; border-radius:5px; font-size:0.9rem;"><option value="">—</option></select>
+                            </label>
+                            <label style="display:block;">
+                                <span style="font-size:0.82rem; font-weight:bold; color:#555;">CON — Constitution</span>
+                                <select id="cb-con" onchange="syncDropdowns()" style="display:block; width:100%; margin-top:0.2rem; padding:0.45rem 0.6rem; border:1px solid #ccc; border-radius:5px; font-size:0.9rem;"><option value="">—</option></select>
+                            </label>
+                            <label style="display:block;">
+                                <span style="font-size:0.82rem; font-weight:bold; color:#555;">INT — Intelligence</span>
+                                <select id="cb-int" onchange="syncDropdowns()" style="display:block; width:100%; margin-top:0.2rem; padding:0.45rem 0.6rem; border:1px solid #ccc; border-radius:5px; font-size:0.9rem;"><option value="">—</option></select>
+                            </label>
+                            <label style="display:block;">
+                                <span style="font-size:0.82rem; font-weight:bold; color:#555;">WIS — Wisdom</span>
+                                <select id="cb-wis" onchange="syncDropdowns()" style="display:block; width:100%; margin-top:0.2rem; padding:0.45rem 0.6rem; border:1px solid #ccc; border-radius:5px; font-size:0.9rem;"><option value="">—</option></select>
+                            </label>
+                            <label style="display:block;">
+                                <span style="font-size:0.82rem; font-weight:bold; color:#555;">CHA — Charisma</span>
+                                <select id="cb-cha" onchange="syncDropdowns()" style="display:block; width:100%; margin-top:0.2rem; padding:0.45rem 0.6rem; border:1px solid #ccc; border-radius:5px; font-size:0.9rem;"><option value="">—</option></select>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- LIVE PREVIEW -->
+                    <div style="flex:1; min-width:260px; padding:1.5rem; background: linear-gradient(135deg, #f5ede0 0%, #e8d5b0 100%);">
+                        <h4 style="color:#5a2d00; text-align:center; letter-spacing:2px; text-transform:uppercase; font-family:Georgia,serif; border-bottom:2px solid #a0622a; padding-bottom:0.4rem; margin-bottom:1.2rem;">Character Sheet</h4>
+
+                        <div style="text-align:center; margin-bottom:1rem;">
+                            <div id="prev-name" style="font-size:1.4rem; font-weight:bold; font-family:Georgia,serif; color:#3b1f00;">Unnamed Hero</div>
+                            <div style="font-size:0.88rem; color:#6b3c00; margin-top:0.2rem;">
+                                <span id="prev-race">Human</span> &nbsp;·&nbsp; <span id="prev-class">Fighter</span> &nbsp;·&nbsp; Level 1
+                            </div>
+                            <div style="font-size:0.78rem; color:#8a5c2a; margin-top:0.2rem;">Racial bonus: <span id="prev-racial">+1 to all abilities</span></div>
+                        </div>
+
+                        <!-- Ability scores grid -->
+                        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; margin-bottom:1rem;">
+                            <div style="background:rgba(255,255,255,0.55); border:1px solid #c49a5a; border-radius:6px; text-align:center; padding:0.5rem 0.3rem;">
+                                <div style="font-size:0.7rem; font-weight:bold; color:#6b3c00; letter-spacing:1px;">STR</div>
+                                <div id="prev-str-score" style="font-size:1.3rem; font-weight:bold; color:#3b1f00;">—</div>
+                                <div id="prev-str-mod" style="font-size:0.85rem; color:#7a4010; border-top:1px solid #c49a5a; margin-top:0.2rem; padding-top:0.2rem;">—</div>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.55); border:1px solid #c49a5a; border-radius:6px; text-align:center; padding:0.5rem 0.3rem;">
+                                <div style="font-size:0.7rem; font-weight:bold; color:#6b3c00; letter-spacing:1px;">DEX</div>
+                                <div id="prev-dex-score" style="font-size:1.3rem; font-weight:bold; color:#3b1f00;">—</div>
+                                <div id="prev-dex-mod" style="font-size:0.85rem; color:#7a4010; border-top:1px solid #c49a5a; margin-top:0.2rem; padding-top:0.2rem;">—</div>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.55); border:1px solid #c49a5a; border-radius:6px; text-align:center; padding:0.5rem 0.3rem;">
+                                <div style="font-size:0.7rem; font-weight:bold; color:#6b3c00; letter-spacing:1px;">CON</div>
+                                <div id="prev-con-score" style="font-size:1.3rem; font-weight:bold; color:#3b1f00;">—</div>
+                                <div id="prev-con-mod" style="font-size:0.85rem; color:#7a4010; border-top:1px solid #c49a5a; margin-top:0.2rem; padding-top:0.2rem;">—</div>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.55); border:1px solid #c49a5a; border-radius:6px; text-align:center; padding:0.5rem 0.3rem;">
+                                <div style="font-size:0.7rem; font-weight:bold; color:#6b3c00; letter-spacing:1px;">INT</div>
+                                <div id="prev-int-score" style="font-size:1.3rem; font-weight:bold; color:#3b1f00;">—</div>
+                                <div id="prev-int-mod" style="font-size:0.85rem; color:#7a4010; border-top:1px solid #c49a5a; margin-top:0.2rem; padding-top:0.2rem;">—</div>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.55); border:1px solid #c49a5a; border-radius:6px; text-align:center; padding:0.5rem 0.3rem;">
+                                <div style="font-size:0.7rem; font-weight:bold; color:#6b3c00; letter-spacing:1px;">WIS</div>
+                                <div id="prev-wis-score" style="font-size:1.3rem; font-weight:bold; color:#3b1f00;">—</div>
+                                <div id="prev-wis-mod" style="font-size:0.85rem; color:#7a4010; border-top:1px solid #c49a5a; margin-top:0.2rem; padding-top:0.2rem;">—</div>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.55); border:1px solid #c49a5a; border-radius:6px; text-align:center; padding:0.5rem 0.3rem;">
+                                <div style="font-size:0.7rem; font-weight:bold; color:#6b3c00; letter-spacing:1px;">CHA</div>
+                                <div id="prev-cha-score" style="font-size:1.3rem; font-weight:bold; color:#3b1f00;">—</div>
+                                <div id="prev-cha-mod" style="font-size:0.85rem; color:#7a4010; border-top:1px solid #c49a5a; margin-top:0.2rem; padding-top:0.2rem;">—</div>
+                            </div>
+                        </div>
+
+                        <!-- Derived stats -->
+                        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; text-align:center;">
+                            <div style="background:rgba(255,255,255,0.55); border:1px solid #c49a5a; border-radius:6px; padding:0.5rem 0.3rem;">
+                                <div style="font-size:0.68rem; font-weight:bold; color:#6b3c00; letter-spacing:0.5px;">HIT POINTS</div>
+                                <div id="prev-hp" style="font-size:1.5rem; font-weight:bold; color:#b30000;">—</div>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.55); border:1px solid #c49a5a; border-radius:6px; padding:0.5rem 0.3rem;">
+                                <div style="font-size:0.68rem; font-weight:bold; color:#6b3c00; letter-spacing:0.5px;">PROF. BONUS</div>
+                                <div id="prev-prof" style="font-size:1.5rem; font-weight:bold; color:#3b1f00;">+2</div>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.55); border:1px solid #c49a5a; border-radius:6px; padding:0.5rem 0.3rem;">
+                                <div style="font-size:0.68rem; font-weight:bold; color:#6b3c00; letter-spacing:0.5px;">PASSIVE PERC.</div>
+                                <div id="prev-pp" style="font-size:1.5rem; font-weight:bold; color:#3b1f00;">—</div>
+                            </div>
+                        </div>
+
+                        <div id="prev-complete-msg" style="display:none; margin-top:1rem; background:#d4edda; border:1px solid #28a745; border-radius:6px; padding:0.7rem; text-align:center; font-size:0.88rem; color:#155724;">
+                            🎉 <strong>Character complete!</strong> You're ready to adventure!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const STANDARD_ARRAY = [15, 14, 13, 12, 10, 8];
+                const ABILITIES = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+
+                function calcMod(score) { return Math.floor((score - 10) / 2); }
+                function modStr(score) { const m = calcMod(score); return (m >= 0 ? '+' : '') + m; }
+
+                function getRacialBonus(race, ab) {
+                    const b = { human: {str:1,dex:1,con:1,int:1,wis:1,cha:1}, elf: {dex:2}, dwarf: {con:2} };
+                    return (b[race] && b[race][ab]) || 0;
+                }
+
+                function getBaseHP(cls) { return cls === 'fighter' ? 10 : 8; }
+
+                function syncDropdowns() {
+                    const selected = {};
+                    for (const ab of ABILITIES) {
+                        const v = document.getElementById('cb-' + ab).value;
+                        if (v) selected[ab] = parseInt(v);
+                    }
+                    for (const ab of ABILITIES) {
+                        const sel = document.getElementById('cb-' + ab);
+                        const current = sel.value;
+                        const usedByOthers = Object.entries(selected)
+                            .filter(([k]) => k !== ab).map(([,v]) => v);
+                        sel.innerHTML = '<option value="">—</option>';
+                        for (const val of STANDARD_ARRAY) {
+                            if (!usedByOthers.includes(val)) {
+                                const opt = document.createElement('option');
+                                opt.value = val; opt.textContent = val;
+                                if (parseInt(current) === val) opt.selected = true;
+                                sel.appendChild(opt);
+                            }
+                        }
+                    }
+                    updatePreview();
+                }
+
+                function updatePreview() {
+                    const name = document.getElementById('cb-name').value.trim() || 'Unnamed Hero';
+                    const race = document.getElementById('cb-race').value;
+                    const cls  = document.getElementById('cb-class').value;
+
+                    const final = {};
+                    let allSet = true;
+                    for (const ab of ABILITIES) {
+                        const v = parseInt(document.getElementById('cb-' + ab).value);
+                        if (!v) { allSet = false; final[ab] = null; }
+                        else { final[ab] = v + getRacialBonus(race, ab); }
+                    }
+
+                    document.getElementById('prev-name').textContent = name;
+                    document.getElementById('prev-race').textContent = race.charAt(0).toUpperCase() + race.slice(1);
+                    document.getElementById('prev-class').textContent = cls.charAt(0).toUpperCase() + cls.slice(1);
+                    document.getElementById('prev-racial').textContent = {human:'+1 to all abilities', elf:'+2 Dexterity', dwarf:'+2 Constitution'}[race];
+
+                    for (const ab of ABILITIES) {
+                        const s = final[ab];
+                        document.getElementById('prev-' + ab + '-score').textContent = s !== null ? s : '—';
+                        document.getElementById('prev-' + ab + '-mod').textContent   = s !== null ? modStr(s) : '—';
+                    }
+
+                    const conMod = final.con !== null ? calcMod(final.con) : null;
+                    const wisMod = final.wis !== null ? calcMod(final.wis) : null;
+                    document.getElementById('prev-hp').textContent = conMod !== null ? Math.max(1, getBaseHP(cls) + conMod) : '—';
+                    document.getElementById('prev-pp').textContent = wisMod !== null ? (10 + wisMod) : '—';
+                    document.getElementById('prev-complete-msg').style.display = allSet ? 'block' : 'none';
+                }
+
+                function toggleSheetRef() {
+                    const el = document.getElementById('sheet-ref');
+                    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+                }
+
+                // Init dropdowns
+                for (const ab of ABILITIES) {
+                    const sel = document.getElementById('cb-' + ab);
+                    for (const val of STANDARD_ARRAY) {
+                        const opt = document.createElement('option');
+                        opt.value = val; opt.textContent = val;
+                        sel.appendChild(opt);
+                    }
+                }
+                syncDropdowns();
+            </script>
 
             <h3>You Did It!</h3>
             <p>Character creation is the hardest part of D&amp;D for beginners, and you just did it! Don't worry if it felt like a lot—once you've done it once, it gets much easier.</p>

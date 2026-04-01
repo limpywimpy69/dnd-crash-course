@@ -7,101 +7,62 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <h1>D&D Crash Course</h1>
-            <p>For Complete Beginners</p>
 
-            <div class="nav-section">
-                <h3>Tutorial Modules</h3>
-                <a class="nav-item" href="index.html" data-page="index.html">
-                    <input type="checkbox" id="check1">
-                    <span>1. What is D&D?</span>
-                </a>
-                <a class="nav-item" href="character-creation.html" data-page="character-creation.html">
-                    <input type="checkbox" id="check2">
-                    <span>2. Character Creation</span>
-                </a>
-                <a class="nav-item" href="core-mechanics.html" data-page="core-mechanics.html">
-                    <input type="checkbox" id="check3">
-                    <span>3. Core Mechanics</span>
-                </a>
-                <a class="nav-item" href="combat.html" data-page="combat.html">
-                    <input type="checkbox" id="check4">
-                    <span>4. Combat Basics</span>
-                </a>
-                <a class="nav-item" href="roleplay.html" data-page="roleplay.html">
-                    <input type="checkbox" id="check5">
-                    <span>5. Roleplay</span>
-                </a>
-                <a class="nav-item" href="first-session.html" data-page="first-session.html">
-                    <input type="checkbox" id="check6">
-                    <span>6. First Session Prep</span>
-                </a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Crash Course - Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header style="text-align:center; padding: 8rem 1rem; background: #222; color: #fff; position: relative; overflow: hidden;">
+        <img src="Images/spiritdragon_olivierbernard_full.jpg" alt="Dragon" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; opacity: 0.25; pointer-events: none;">
+        <div style="position: relative; z-index: 1;">
+            <h1 style="font-size: 2.8rem; margin: 0;">Welcome to a beginner D&D crash course!</h1>
+        </div>
+    </header>
+    <main style="max-width: 600px; margin: 2rem auto; padding: 2rem; background: transparent;">
+        <section style="
+            margin-bottom: 2rem;
+            background: linear-gradient(160deg, #f2e0b0 0%, #e6c97a 40%, #d4a84b 100%);
+            border: 6px double #7a4e1a;
+            border-radius: 4px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 4px 24px rgba(80,40,0,0.35), inset 0 0 40px rgba(120,70,0,0.18);
+            position: relative;
+            font-family: Georgia, 'Times New Roman', serif;
+            text-align: center;
+        ">
+            <h2 style="
+                text-align: center;
+                font-size: 1.6rem;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                color: #3b1f00;
+                border-bottom: 2px solid #7a4e1a;
+                padding-bottom: 0.5rem;
+                margin-bottom: 1.5rem;
+            ">About This Website</h2>
+            <p style="color: #3b1f00; line-height: 1.8; text-align: left; margin-bottom: 2.5rem;">This is a school project I have worked on for the course <strong>NATS1506 Understanding AI</strong>, where we were tasked to tackle a stretch problem with the help of AI. Here, I have tried to create a beginner-friendly crash course to help you prepare for your first ever Dungeons & Dragons campainge!</p>
+            <div style="border-top: 2px solid #7a4e1a; padding-top: 2rem;">
+                <a href="what-is-dnd.html" style="
+                    display: inline-block;
+                    padding: 1rem 2.5rem;
+                    background: #7a1a00;
+                    color: #f2e0b0;
+                    font-size: 1.2rem;
+                    font-family: Georgia, 'Times New Roman', serif;
+                    font-weight: bold;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    border: 3px solid #3b1f00;
+                    box-shadow: 0 3px 10px rgba(60,20,0,0.4);
+                    transition: background 0.2s;
+                ">Start Your Adventure!</a>
             </div>
-
-            <div class="nav-section">
-                <h3>Reference</h3>
-                <a class="nav-item" href="reference.html#glossary" data-page="reference.html">
-                    <span>📖 Glossary</span>
-                </a>
-                <a class="nav-item" href="reference.html#quickref" data-page="reference.html">
-                    <span>⚡ Quick Reference</span>
-                </a>
-                <a class="nav-item" href="reference.html#resources" data-page="reference.html">
-                    <span>🔗 Resources</span>
-                </a>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            <h2>Module 1: What is Dungeons &amp; Dragons?</h2>
-            <p>Welcome to the world of Dungeons &amp; Dragons (D&amp;D)! If you've heard about D&amp;D but never played, you're probably wondering: what exactly IS this game?</p>
-
-            <h3>It's Collaborative Storytelling</h3>
-            <p>D&amp;D is a game where you and your friends tell a story together. One person, the Dungeon Master (DM), describes the world and the situations your characters encounter. Everyone else plays a character—a hero in that world—and decides what their character does.</p>
-            <p>Think of it like this: The DM says, "You enter a dark tavern. A hooded figure sits alone in the corner, watching you." Then you decide: Do you approach them? Ignore them and order a drink? Try to sneak closer to eavesdrop? It's YOUR choice.</p>
-
-            <h3>The DM: Your Guide and Referee</h3>
-            <p>The DM is like a combination of narrator, actor, and referee. They:</p>
-            <ul>
-                <li>Describe what your characters see, hear, and experience</li>
-                <li>Play all the other characters in the world (called NPCs—Non-Player Characters)</li>
-                <li>Create (or use pre-made) adventures for you to experience</li>
-                <li>Decide when you need to roll dice to see if you succeed at something</li>
-                <li>Make final rulings on rules questions</li>
-            </ul>
-            <p>The DM isn't "against" the players—they're there to help everyone have fun and tell an exciting story together.</p>
-
-            <h3>The Players: The Heroes of the Story</h3>
-            <p>As a player, you create a character—maybe a brave knight, a sneaky rogue, or a powerful wizard. This character is who you'll "be" during the game. You'll:</p>
-            <ul>
-                <li>Describe what your character does and says</li>
-                <li>Make decisions (Should we fight the dragon or try to sneak past?)</li>
-                <li>Roll dice when the outcome is uncertain</li>
-                <li>Work with other players to overcome challenges</li>
-            </ul>
-
-            <h3>What Makes D&amp;D Different from Video Games?</h3>
-            <p>In a video game, you can only do what the programmers planned for. In D&amp;D, you can try ANYTHING. Want to convince the villain to join your side? Climb on the dragon's back? Open a bakery instead of going on adventures? You can try! The DM will help figure out if and how it works.</p>
-
-            <h3>What Does a Session Look Like?</h3>
-            <p>A typical D&amp;D session lasts 3-4 hours (though some are shorter or longer). Here's roughly what happens:</p>
-            <ol>
-                <li><strong>Recap:</strong> The DM reminds everyone what happened last time</li>
-                <li><strong>The Adventure:</strong> The DM describes situations, you make choices, roll dice for uncertain actions</li>
-                <li><strong>Combat (maybe):</strong> If you fight enemies, combat has structured turns</li>
-                <li><strong>Roleplay:</strong> Talk to NPCs, make plans, interact with the world</li>
-                <li><strong>Breaks:</strong> Snack breaks are important!</li>
-            </ol>
-
-            <h3>There's No "Winning"</h3>
-            <p>D&amp;D isn't about beating other players or reaching "the end." It's about the journey, the story, and the fun you have together. Some of the best D&amp;D moments come from failure—like when your plan goes hilariously wrong or your character does something ridiculous.</p>
-
-            <p><strong>Ready to learn how to create your first character? <a href="character-creation.html">Move on to Module 2!</a></strong></p>
-        </main>
-    </div>
-
-    <script src="script.js"></script>
+        </section>
+    </main>
 </body>
 </html>

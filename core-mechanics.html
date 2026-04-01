@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header style="text-align:center; padding: 8rem 1rem; background: #222; color: #fff; position: relative; overflow: hidden;">
+        <img src="Images/core-mechanic.jpg" alt="Dragon" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%; opacity: 0.25; pointer-events: none;">
+        <div style="position: relative; z-index: 1;">
+            <h1 style="font-size: 2.8rem; margin: 0;">Core Mechanics</h1>
+        </div>
+    </header>
     <div class="container">
         <aside class="sidebar">
             <h1>D&D Crash Course</h1>
@@ -14,7 +20,7 @@
 
             <div class="nav-section">
                 <h3>Tutorial Modules</h3>
-                <a class="nav-item" href="index.html" data-page="index.html">
+                <a class="nav-item" href="what-is-dnd.html" data-page="what-is-dnd.html">
                     <input type="checkbox" id="check1">
                     <span>1. What is D&D?</span>
                 </a>
@@ -59,7 +65,7 @@
             <p>Now that you have a character, let's learn how to actually PLAY D&amp;D! Almost everything in the game comes down to one simple mechanic.</p>
 
             <h3>The Core Mechanic (This Is Important!)</h3>
-            <p>When you try to do something where the outcome is uncertain, you roll a 20-sided die (d20), add a modifier, and compare the result to a target number.</p>
+            <p>When you try to do something where the outcome is uncertain, you roll a 20-sided die (<span class="tip" data-tip="A 20-sided die—the core die of D&D, used for almost every roll.">d20</span>), add a modifier, and compare the result to a target number.</p>
 
             <p><strong>The Formula:</strong></p>
             <div class="formula">d20 + relevant modifier  VS.  target number</div>
@@ -69,20 +75,20 @@
             <div class="example-box">
                 <strong>Example:</strong><br>
                 You're trying to climb a slippery cliff wall. The DM says, "This looks difficult. Make a Strength check, DC 13."<br><br>
-                • You roll a d20: You get a 10<br>
+                • You roll a <span class="tip" data-tip="A 20-sided die—the core die of D&D.">d20</span>: You get a 10<br>
                 • You add your Strength modifier: +2<br>
                 • Your total: 10 + 2 = 12<br>
-                • Target (DC 13): You needed 13<br>
+                • Target (<span class="tip" data-tip="Difficulty Class: the target number you must meet or beat.">DC</span> 13): You needed 13<br>
                 • <strong>Result: You fail!</strong> You slip and can't make progress up the cliff.
             </div>
 
             <p><strong>What's a DC?</strong><br>
-            DC means "Difficulty Class"—the target number you need to meet or beat. The DM sets this based on how hard the task is.</p>
+            <span class="tip" data-tip="Difficulty Class: the target number you must meet or beat to succeed on a roll.">DC</span> means "Difficulty Class"—the target number you need to meet or beat. The DM sets this based on how hard the task is.</p>
 
             <h3>Three Types of d20 Rolls</h3>
             <p>You'll make three main types of rolls in D&amp;D:</p>
 
-            <p><strong>1. Ability Checks</strong></p>
+            <p><strong>1. <span class="tip" data-tip="d20 rolls made when attempting something uncertain—climbing, persuading, sneaking, etc.">Ability Checks</span></strong></p>
             <ul>
                 <li><strong>When:</strong> You're trying to DO something (climb, sneak, persuade, etc.)</li>
                 <li><strong>Formula:</strong> d20 + ability modifier (+ proficiency if you're proficient in the skill)</li>
@@ -90,21 +96,21 @@
             </ul>
             <p><strong>Example:</strong> Sneaking past a guard = Dexterity (Stealth) check</p>
 
-            <p><strong>2. Saving Throws</strong></p>
+            <p><strong>2. <span class="tip" data-tip="d20 rolls to resist harmful effects like spells, poison, or traps. Each is tied to an ability score.">Saving Throws</span></strong></p>
             <ul>
                 <li><strong>When:</strong> You're trying to RESIST something (a spell, poison, trap, etc.)</li>
                 <li><strong>Formula:</strong> d20 + ability modifier (+ proficiency if proficient in that save)</li>
                 <li><strong>Against:</strong> DC set by the spell or effect</li>
             </ul>
-            <p><strong>Example:</strong> A wizard casts fireball at you. Make a Dexterity saving throw to dodge!</p>
+            <p><strong>Example:</strong> A wizard casts fireball at you. Make a Dexterity <span class="tip" data-tip="A d20 roll to resist a harmful effect. Each save is tied to an ability score.">saving throw</span> to dodge!</p>
 
             <p><strong>3. Attack Rolls</strong></p>
             <ul>
                 <li><strong>When:</strong> You're trying to HIT someone with a weapon or spell</li>
-                <li><strong>Formula:</strong> d20 + ability modifier + proficiency bonus (for attacks you're proficient with)</li>
-                <li><strong>Against:</strong> Target's Armor Class (AC)</li>
+                <li><strong>Formula:</strong> d20 + ability modifier + <span class="tip" data-tip="A bonus (+2 at Level 1) added when rolling with skills, saves, or attacks you are trained in.">proficiency bonus</span> (for attacks you're proficient with)</li>
+                <li><strong>Against:</strong> Target's <span class="tip" data-tip="How hard the target is to hit. Your attack roll must meet or beat their AC.">Armor Class (AC)</span></li>
             </ul>
-            <p><strong>Example:</strong> Swinging your sword at a goblin. Its AC is 13. Roll d20 + your attack bonus!</p>
+            <p><strong>Example:</strong> Swinging your sword at a goblin. Its AC is 13. Roll <span class="tip" data-tip="A 20-sided die—the core die of D&D.">d20</span> + your attack bonus!</p>
 
             <h3>Proficiency Bonus: When Do I Add It?</h3>
             <p>Your proficiency bonus is +2 at Level 1. You add it when:</p>
